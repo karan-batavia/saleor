@@ -18,7 +18,11 @@ def test_remove_delivery_method_from_checkout_with_cc(
     checkout_with_delivery_method_for_cc,
 ):
     # given
-    expected_updated_fields = {"collection_point_id", "shipping_address_id"}
+    expected_updated_fields = {
+        "collection_point_id",
+        "shipping_address_id",
+        "save_shipping_address",
+    }
     # when
     updated_fields = remove_delivery_method_from_checkout(
         checkout_with_delivery_method_for_cc
@@ -91,6 +95,7 @@ def test_assign_external_shipping_to_checkout_with_cc(
         "shipping_method_name",
         "collection_point_id",
         "shipping_address_id",
+        "save_shipping_address",
     }
 
     # when
@@ -259,6 +264,7 @@ def test_assign_built_in_shipping_to_checkout_with_cc(
         "shipping_method_name",
         "collection_point_id",
         "shipping_address_id",
+        "save_shipping_address",
     }
     shipping_method_data = ShippingMethodData(
         id=str(shipping_method.id),
@@ -362,7 +368,11 @@ def test_assign_collection_point_to_checkout_without_delivery_method(
 ):
     # given
     collection_point = warehouses_for_cc[0]
-    expected_updated_fields = {"collection_point_id", "shipping_address_id"}
+    expected_updated_fields = {
+        "collection_point_id",
+        "shipping_address_id",
+        "save_shipping_address",
+    }
 
     # when
     fields_to_update = assign_collection_point_to_checkout(checkout, collection_point)
@@ -388,6 +398,7 @@ def test_assign_collection_point_to_checkout_with_external_shipping_method(
         "shipping_address_id",
         "external_shipping_method_id",
         "shipping_method_name",
+        "save_shipping_address",
     }
 
     # when
@@ -415,6 +426,7 @@ def test_assign_collection_point_to_checkout_with_shipping_method(
         "shipping_address_id",
         "shipping_method_id",
         "shipping_method_name",
+        "save_shipping_address",
     }
 
     # when
@@ -444,6 +456,7 @@ def test_assign_collection_point_to_checkout_with_different_cc(
     expected_updated_fields = {
         "collection_point_id",
         "shipping_address_id",
+        "save_shipping_address",
     }
 
     # when
