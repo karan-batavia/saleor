@@ -1,4 +1,4 @@
-name: Pytest
+name: Linters
 
 on:
   pull_request:
